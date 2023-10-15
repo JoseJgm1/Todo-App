@@ -3,7 +3,6 @@ import '../stylesheets/TaskForm.css';
 import { v4 as uuidv4 } from 'uuid';
 
 function TaskForm(props) {
-
   const [input, setInput] = useState('');
 
   const handleInputChange = e => {
@@ -20,17 +19,18 @@ function TaskForm(props) {
     }
 
     props.onSubmit(newTask);
+
+    setInput('');  // Reset the input after submitting
   }
 
   return (
-    <form 
-      className='task-form'
-      onSubmit={handleSubmit}>
+    <form className='task-form' onSubmit={handleSubmit}>
       <input 
         className='task-input'
         type='text'
         placeholder='Write a Task'
         name='text'
+        value={input}  // This ensures the input displays the current state
         onChange={handleInputChange}
       />
       <button className='task-button'>
@@ -41,3 +41,4 @@ function TaskForm(props) {
 }
 
 export default TaskForm;
+

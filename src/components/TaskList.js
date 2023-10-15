@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import TaskForm from './TaskForm.js';
+import TaskForm from './TaskForm';
 import Task from './Task';
 import '../stylesheets/TaskList.css';
 
 function TaskList() {
-
   const [tasks, setTasks] = useState([]);
 
   const addTask = task => {
@@ -29,27 +28,41 @@ function TaskList() {
     });
     setTasks(updatedTasks);
   }
-  
+
+  const editTask = (id, newText) => {
+    const updatedTasks = tasks.map(task => {
+      if (task.id === id) {
+        task.text = newText;
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  }
+
   return (
     <>
       <TaskForm onSubmit={addTask} />
       <div className='tasks-list-container'>
         {
-          tasks.map((task) =>
+          tasks.map((task) => (
             <Task
               key={task.id}
-              id={task.id} 
+              id={task.id}
               text={task.text}
               completed={task.completed}
               completeTask={completeTask}
-              deleteTask={deleteTask} />
-          ) 
+              deleteTask={deleteTask}
+              editTask={editTask}
+            />
+          ))
         }
       </div>
     </>
-  );    
+  );
 }
 
 export default TaskList;
+
+
 
 

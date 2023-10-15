@@ -39,6 +39,11 @@
   
   /* Icon */
   
+  .task-icon-container {
+    display: flex;  
+    align-items: center;
+  }
+
   .task-icon {
     width: 25px;
     height: 25px;

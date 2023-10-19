@@ -19,7 +19,6 @@ function TaskForm(props) {
     }
 
     props.onSubmit(newTask);
-
     setInput('');  // Reset the input after submitting
   }
 
@@ -30,7 +29,7 @@ function TaskForm(props) {
         type='text'
         placeholder='Write a Task'
         name='text'
-        value={input}  // This ensures the input displays the current state
+        value={input}
         onChange={handleInputChange}
       />
       <button className='task-button'>
@@ -41,4 +40,7 @@ function TaskForm(props) {
 }
 
 export default TaskForm;
+
+
+
 

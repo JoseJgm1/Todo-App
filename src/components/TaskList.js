@@ -7,15 +7,9 @@ import axios from 'axios';
 function TaskList() {
     const [tasks, setTasks] = useState([]);
 
-    const authConfig = {
-        auth: {
-            username: 'admin',
-            password: '1234'
-        }
-    };
-
     useEffect(() => {
-        axios.get('http://127.0.0.1:5000/get-tasks', authConfig)
+        // Carga inicial de tareas desde el backend.
+        axios.get('http://127.0.0.1:5000/get-tasks')
             .then(response => {
                 setTasks(response.data);
             })
@@ -25,7 +19,7 @@ function TaskList() {
     }, []);
 
     const addTask = task => {
-        axios.post('http://127.0.0.1:5000/add-task', task, authConfig)
+        axios.post('http://127.0.0.1:5000/add-task', task)
             .then(response => {
                 if (response.data.success) {
                     setTasks(prevTasks => [response.data.task, ...prevTasks]);
@@ -38,40 +32,54 @@ function TaskList() {
             });
     }
 
-    const deleteTask = id => {
-        axios.delete(`http://127.0.0.1:5000/delete-task/${id}`, authConfig)
-            .then(response => {
-                if (response.data.success) {
-                    const updatedTasks = tasks.filter(task => task.id !== id);
-                    setTasks(updatedTasks);
-                } else {
-                    console.error('Error al eliminar tarea.');
-                }
-            })
-            .catch(error => {
-                console.error('Error en la llamada API: ', error);
-            });
-    }
-
     const completeTask = id => {
+        let updatedTask = null;
+
         const updatedTasks = tasks.map(task => {
             if (task.id === id) {
                 task.completed = !task.completed;
+                updatedTask = task;
             }
             return task;
         });
+
         setTasks(updatedTasks);
+
+        if (updatedTask) {
+            axios.put('http://127.0.0.1:5000/update-task', updatedTask)
+                .catch(error => {
+                    console.error('Error updating task status: ', error);
+                });
+        }
     }
 
     const editTask = (id, newText) => {
-        // Aquí deberías agregar una llamada a la API para editar la tarea en el backend.
         const updatedTasks = tasks.map(task => {
             if (task.id === id) {
                 task.text = newText;
             }
             return task;
         });
+
         setTasks(updatedTasks);
+
+        const updatedTask = tasks.find(task => task.id === id);
+        if (updatedTask) {
+            axios.put('http://127.0.0.1:5000/update-task', updatedTask)
+                .catch(error => {
+                    console.error('Error updating task text: ', error);
+                });
+        }
+    }
+
+    const deleteTask = id => {
+        const updatedTasks = tasks.filter(task => task.id !== id);
+        setTasks(updatedTasks);
+
+        axios.delete('http://127.0.0.1:5000/delete-task', { data: { id } })
+            .catch(error => {
+                console.error('Error deleting task: ', error);
+            });
     }
 
     return (
@@ -97,6 +105,7 @@ function TaskList() {
 }
 
 export default TaskList;
+
 
 
 

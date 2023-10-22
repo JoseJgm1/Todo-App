@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import freeCodeCampLogo from './images/freecodecamp-logo.png'; 
 import TaskList from './components/TaskList'; 
+import Navbar from './components/Navbar'; 
 import axios from 'axios';
 
 function App() {
@@ -40,6 +41,15 @@ function App() {
 
   return (
     <div className='task-app'>
+      <Navbar 
+        isLoggedIn={isLoggedIn} 
+        handleLogin={handleLogin} 
+        handleLogout={handleLogout}
+        username={username}
+        setUsername={setUsername}
+        password={password}
+        setPassword={setPassword}
+      />
       <div className='freecodecamp-logo-container'>
         <img src={freeCodeCampLogo} className='freecodecamp-logo' alt="freeCodeCamp Logo" /> 
       </div>
@@ -48,25 +58,11 @@ function App() {
           <>
             <h1>My Tasks</h1>
             <TaskList />
-            <button onClick={handleLogout}>Logout</button>
           </>
         ) : (
           <>
-            <h1>Please Login</h1>
-            <input 
-              type='text' 
-              placeholder='Username' 
-              value={username} 
-              onChange={e => setUsername(e.target.value)} 
-            />
-            <input 
-              type='password' 
-              placeholder='Password' 
-              value={password} 
-              onChange={e => setPassword(e.target.value)} 
-            />
-            <button onClick={handleLogin}>Login</button>
-            <p style={{ color: messageColor }}>{message}</p> {/* Usamos el estado para controlar el color */}
+            <h1>Please Log In</h1>  {/* Mensaje cuando el usuario no está logueado */}
+            <p style={{ color: messageColor }}>{message}</p>
           </>
         )}
       </div>
@@ -75,8 +71,6 @@ function App() {
 }
 
 export default App;
-
-
 
 
 

@@ -54,3 +54,24 @@ h1 {
 }
 
 
+/*Navbar*/
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #333;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;  /* Espacio entre los botones */
+}
+
+.auth-buttons button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+

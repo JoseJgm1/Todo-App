@@ -7,9 +7,15 @@ import axios from 'axios';
 function TaskList() {
     const [tasks, setTasks] = useState([]);
 
+    const authConfig = {
+        auth: {
+            username: 'admin',
+            password: '1234'
+        }
+    };
+
     useEffect(() => {
-        // Carga inicial de tareas desde el backend.
-        axios.get('http://127.0.0.1:5000/get-tasks')
+        axios.get('http://127.0.0.1:5000/get-tasks', authConfig)
             .then(response => {
                 setTasks(response.data);
             })
@@ -19,7 +25,7 @@ function TaskList() {
     }, []);
 
     const addTask = task => {
-        axios.post('http://127.0.0.1:5000/add-task', task)
+        axios.post('http://127.0.0.1:5000/add-task', task, authConfig)
             .then(response => {
                 if (response.data.success) {
                     setTasks(prevTasks => [response.data.task, ...prevTasks]);
@@ -33,9 +39,18 @@ function TaskList() {
     }
 
     const deleteTask = id => {
-        // Aquí deberías agregar una llamada a la API para eliminar la tarea en el backend.
-        const updatedTasks = tasks.filter(task => task.id !== id);
-        setTasks(updatedTasks);
+        axios.delete(`http://127.0.0.1:5000/delete-task/${id}`, authConfig)
+            .then(response => {
+                if (response.data.success) {
+                    const updatedTasks = tasks.filter(task => task.id !== id);
+                    setTasks(updatedTasks);
+                } else {
+                    console.error('Error al eliminar tarea.');
+                }
+            })
+            .catch(error => {
+                console.error('Error en la llamada API: ', error);
+            });
     }
 
     const completeTask = id => {
@@ -82,5 +97,13 @@ function TaskList() {
 }
 
 export default TaskList;
+
+
+
+
+
+
+
+
 
 

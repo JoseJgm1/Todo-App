@@ -52,3 +52,7 @@ function Task({ id, text, completed, completeTask, deleteTask, editTask }) {
 export default Task;
 
 
+
+
+
+

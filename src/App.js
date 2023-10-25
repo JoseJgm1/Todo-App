@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import freeCodeCampLogo from './images/freecodecamp-logo.png'; 
+import Logo from './images/logo.jpeg'; 
 import TaskList from './components/TaskList'; 
 import Navbar from './components/Navbar'; 
 import axios from 'axios';
@@ -49,19 +49,19 @@ function App() {
         setUsername={setUsername}
         password={password}
         setPassword={setPassword}
-      />
-      <div className='freecodecamp-logo-container'>
-        <img src={freeCodeCampLogo} className='freecodecamp-logo' alt="freeCodeCamp Logo" /> 
+      />                            
+      <div className='logo-container'>
+        <img src={Logo} className='logo' alt="todo-list Logo" /> 
       </div>
       <div className='main-task-list'>
         {isLoggedIn ? (
           <>
-            <h1>My Tasks</h1>
+            <h1>Checklist</h1>
             <TaskList />
           </>
         ) : (
           <>
-            <h1>Please Log In</h1>  {/* Mensaje cuando el usuario no está logueado */}
+            <h1>Log in to Todo List</h1>  {/* Mensaje cuando el usuario no está logueado */}
             <p style={{ color: messageColor }}>{message}</p>
           </>
         )}

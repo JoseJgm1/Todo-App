@@ -1,5 +1,5 @@
 .task-container {
-  width: 500px;
+  width: 450px;
   min-height: 65px;
   background-color: #1b1b32;
   margin: 5px 0;
@@ -13,7 +13,7 @@
 }
 
 /* Colors */
-
+/*
 .task-container:nth-child(3n + 1) {
   background-color: #1b1b32;
 }
@@ -21,9 +21,10 @@
 .task-container:nth-child(3n + 2) {
   background-color: #2a2a40;
 }
-
-.task-container:nth-child(3n + 3) {
+*/
+.task-container {
   background-color: #3b3b4f;
+  border: white 2px solid;
 }
 
 /* Text */
@@ -53,6 +54,6 @@
 /* Completed Task */
 
 .task-container.completed {
-  background-color: #5a01a7;
+  background-color: #5dc1b9;
   text-decoration: line-through;
 }

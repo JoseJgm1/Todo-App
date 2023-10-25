@@ -21,19 +21,21 @@ function Navbar({ isLoggedIn, handleLogin, handleLogout, username, setUsername, 
     <div className="navbar">
       {!isLoggedIn ? (
         <>
-          <input 
-            type="text" 
-            placeholder="Username" 
-            value={username} 
-            onChange={e => setUsername(e.target.value)} 
-          />
-          <input 
-            type="password" 
-            placeholder="Password" 
-            value={password} 
-            onChange={e => setPassword(e.target.value)} 
-          />
-          <button onClick={submitLogin}>Login</button>
+            <input 
+              className='input-box'
+              type="text" 
+              placeholder="Username" 
+              value={username} 
+              onChange={e => setUsername(e.target.value)} 
+            />
+            <input 
+              className='input-box'
+              type="password" 
+              placeholder="Password" 
+              value={password} 
+              onChange={e => setPassword(e.target.value)} 
+            />
+            <button onClick={submitLogin}>Login</button>
         </>
       ) : (
         <button onClick={handleLogout}>Logout</button>

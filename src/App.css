@@ -1,20 +1,21 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+
 }
 
 html, 
 body {
   color: white;
-  background-color: #1b1b32;
+  background-image: url(./images/background-image.jpeg);    /*Cambiar color background*/
   font-family: Lato, sans-serif;
   margin-top: 40px;
 }
 
 h1 {
-  color: #1b1b32;
-  font-size: 25px;
+  color: white;
+  font-size: 50px;
+  font-weight: 1000;
   font-family: Roboto, sans-serif;
   text-align: center;
   margin: 20px 0;
@@ -27,41 +28,47 @@ h1 {
   align-items: center;
 }
 
-/* freeCodeCamp Logo */
+/*Logo */
 
-.freecodecamp-logo-container {
+.logo-container {
   width: 100%;
-  margin: 20px;
+  margin: 0px 20px 10px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.freecodecamp-logo {
-  width: 400px;
-  height: 50px;
+.logo {
+  width: 100px;
+  height: 80px;
+  border-radius: 20px;
 }
 
 /* Task Lists */
 
 .main-task-list {
   width: 600px;
-  min-height: 500px;
-  background-color: #d0d0d5;
+  min-height: 450px;
+  background-color: rgba(0, 49, 83, 0.8);
   padding: 25px;
   margin: 10px;
   border-radius: 26px;
 }
 
 
+
 /*Navbar*/
 
 .navbar {
+  position: fixed;
+  top: 0px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
+  height: 30px;
+  justify-content: flex-end;
   padding: 1rem 2rem;
-  background-color: #333;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .auth-buttons {
@@ -73,5 +80,26 @@ h1 {
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
+
+button {
+  margin-right: 40px;
+  margin-left: 10px;
+  height: 30px;
+  color: #ffffff; 
+  font-weight: 800; 
+  text-align: center;
+  font-size: 18px;
+  padding: 0px 10px;
+  background-color: #003153;
+  border-radius: 5px;
+}
+
+.input-box {
+  margin: 0px 5px;
+  border-radius: 5px;
+}
+
+
+
 
 

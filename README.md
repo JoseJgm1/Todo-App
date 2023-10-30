@@ -1,4 +1,4 @@
-Todo-List create with React and Python.
+Todo-List created with React and Python.
 
 Python, React, Javascript, Flask, Axios, Git, Github.
 

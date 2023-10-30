@@ -12,16 +12,6 @@
   cursor: pointer;    
 }
 
-/* Colors */
-/*
-.task-container:nth-child(3n + 1) {
-  background-color: #1b1b32;
-}
-
-.task-container:nth-child(3n + 2) {
-  background-color: #2a2a40;
-}
-*/
 .task-container {
   background-color: #3b3b4f;
   border: white 2px solid;

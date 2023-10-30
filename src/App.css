@@ -7,7 +7,7 @@
 html, 
 body {
   color: white;
-  background-image: url(./images/background-image.jpeg);    /*Cambiar color background*/
+  background-image: url(./images/background-image.jpeg);    
   font-family: Lato, sans-serif;
   margin-top: 40px;
 }
